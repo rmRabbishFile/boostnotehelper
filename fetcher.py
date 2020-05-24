@@ -9,6 +9,8 @@ import cson
 ## Changer Change the items from the request of UI
 ## Terminal UI
 
+### TODO: Seperate the md writing file with cson.
+
 class Fetcher:
   def __init__(self, file_name = "test.cson"):
     self.file_data = ""
@@ -26,16 +28,18 @@ class Fetcher:
 # Write content data to the cson files
 # Input: 
 #
-  def write_file(self, data_output):
+  def write_file(self, startIdx, data_table):
     # head = self.write_data[0:204]
     self.keykey = "content: '''"
     self.endkey = "'''\nlinesHighlighted"
     self.head = self.write_data.find(self.keykey)+ len(self.keykey) + 1
     self.end = self.write_data.find(self.endkey)
-    self.output_data = self.write_data[0:self.head] + data_output + \
-      '\n' + self.write_data[self.end:]
+    seperator = u'|' 
+    data_output = self.content_data[0:startIdx] + '|' + seperator.join(data_table)
+    self.output_data = self.write_data[0:self.head] + \
+      data_output.encode('ascii','ignore') + '\n' + self.write_data[self.end:]
     #data_output.encode('ascii','ignore') + "\n'''\nlinesHighlighted: []\nisStarred: false\nisTrashed: false"
-    #output_data = output_data.decode('utf-8')
+    self.output_data = self.output_data.decode('utf-8')
     try: 
       #with open("../notes/c39b9947-b545-4a13-b05f-7b43e54568f8.cson",'w') as weekfile:
       with open(self.file_name,'w') as weekfile:

@@ -1,6 +1,9 @@
 # This class contains functions regarding basic table 
 # manipulation in markdown format
 
+# This class only took the raw markdown notes content 
+# as input and change the table within
+
 class tablemd:
     def __init__(self, mdcontent):
         self.data_raw = mdcontent
@@ -36,14 +39,16 @@ class tablemd:
         end = end.replace('\n||','\n|')
         return end
 # testing with tableReformat("|\n 123 |\n|123|\n 123 \n")
+# index is the column of the selected row
     def getTableEntry(self,index):
         escape = True
         buffer = ""
         while(escape):
-            temp = raw_input("only one at a time:")
+            temp = raw_input("only one at a time: (exit with e)")
             if temp == "e":
                 break
             buffer = buffer + temp + "<br>"
+        self.table[index] = buffer.decode('utf-8')
         return buffer
 
     def printElement(self, indx):
