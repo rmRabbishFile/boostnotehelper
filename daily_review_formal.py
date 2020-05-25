@@ -8,9 +8,10 @@ import pdb
 import fetcher
 import tablemd
 
+## TODO: Seperate cson with writing and improve the UI by bash scripts
 
-weekfile = "../notes/dcdec832-2203-44ec-b8b4-28ef78b1c207.cson"
-dailyfile = "../notes/c39b9947-b545-4a13-b05f-7b43e54568f8.cson"
+weekfile = "/home/c7031195/Dropbox/Boostnote//notes/dcdec832-2203-44ec-b8b4-28ef78b1c207.cson"
+dailyfile = "/home/c7031195/Dropbox/Boostnote//notes/c39b9947-b545-4a13-b05f-7b43e54568f8.cson"
 
 ## Read in the content
 dailyreview =  fetcher.Fetcher(dailyfile)
