@@ -40,18 +40,20 @@ class tablemd:
         return end
 # testing with tableReformat("|\n 123 |\n|123|\n 123 \n")
 # index is the column of the selected row
-    def getTableEntry(self,index):
+    def getTableEntry(self,row, col):
+        index = col + self.firstNrow(row)
         escape = True
         buffer = ""
         while(escape):
             temp = raw_input("only one at a time: (exit with e)")
-            if temp == "e":
+            if temp.strip() == "e":
                 break
             buffer = buffer + temp + "<br>"
         self.table[index] = buffer.decode('utf-8')
         return buffer
 
-    def printElement(self, indx):
+    def printElement(self, row, col):
+        indx = self.firstNrow(row) + col 
         data_plan = self.table[indx].split(u'<br>')
 
         for i in range(len(data_plan)):

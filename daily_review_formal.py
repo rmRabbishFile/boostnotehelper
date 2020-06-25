@@ -4,6 +4,7 @@
 import os
 import datetime
 import pdb
+import sys
 
 import fetcher
 import tablemd
@@ -23,35 +24,39 @@ weekreview.read_file()
 dailytable = tablemd.tablemd(dailyreview.content_data)
 weektable = tablemd.tablemd(weekreview.content_data)
 
+if datetime.datetime.today() == 5:
+    print("Today is Saturday, Backing off...")
+    sys.exit(0)
 
 print "This is weekly plan"
 
 for i in range(1, 4):
-    weektable.printElement(weektable.firstNrow(i) + 0)
-    weektable.printElement(weektable.firstNrow(i) + 1)
+    weektable.printElement(i, 0)
+    weektable.printElement(i, 1)
 
 print "Today plan is"
-# First day is sunday
+# First day is sunday: control loop of the day
 week_day = (datetime.datetime.today().weekday() + 1 ) % 7 
 
-
+# 6 Rows per week: control loop of the table
 planIndex = 1
-index_today = planIndex + dailytable.firstNrow(week_day%6)
+index_today = week_day % 6
+index_tomorrow = (week_day + 1) % 6
 
-dailytable.printElement(index_today)
+dailytable.printElement(index_today, planIndex)
 
 writefile = "test.cson"
 print "please specify what is done"
-buffer = dailytable.getTableEntry(index_today+1)
+buffer = dailytable.getTableEntry(index_today, planIndex + 1)
 #data_table[index_today+2] = buffer.decode('utf-8')
 
 print "Unfinished and emerging today?"
-buffer = dailytable.getTableEntry(index_today+2)
+buffer = dailytable.getTableEntry(index_today, planIndex + 2)
 #data_table[index_today+3] = buffer.decode('utf-8')
 
 print "please specify the plan tomorrow"
 buffer = ""
-buffer = dailytable.getTableEntry(index_today+5)
+buffer = dailytable.getTableEntry(index_tomorrow, planIndex)
 #data_table[index_today+6] = buffer.decode('utf-8')
 
 
