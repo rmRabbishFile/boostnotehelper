@@ -3,7 +3,7 @@
 
 # This class only took the raw markdown notes content 
 # as input and change the table within
-
+import re
 class tablemd:
     def __init__(self, mdcontent):
         self.data_raw = mdcontent
@@ -23,7 +23,8 @@ class tablemd:
         self.table = tablecontent[1:].split(u'|')
         self.colcnt = self.table.index('\n')
         self.first =  self.colcnt + 1
-        self.table_end = "Search for the table end later"
+        self.nrow = self.table.count('\n')
+
         ## TODO: Create a dictionary for title
         ##       Get the # of rows of the table
         
@@ -38,12 +39,12 @@ class tablemd:
         end = end.replace('|\n','|\n|')
         end = end.replace('\n||','\n|')
         return end
-# testing with tableReformat("|\n 123 |\n|123|\n 123 \n")
+# TODO: Pending test with tableReformat("|\n 123 |\n|123|\n 123 \n")
 # index is the column of the selected row
-    def getTableEntry(self,row, col):
+    def getTableEntry(self,row, col, clear=False):
         index = col + self.firstNrow(row)
         escape = True
-        buffer = ""
+        buffer = "  "
         while(escape):
             temp = raw_input("only one at a time: (exit with e)")
             if temp.strip() == "e":
@@ -65,15 +66,10 @@ class tablemd:
         return newmdcontent
 
 
-def tableElement():
-    buffer = ""
-    while(escape):
-        temp = raw_input("only one at a time:")
-        if temp == "e":
-            escape = False 
-        buffer = buffer + temp + "<br>"
-    return buffer
-
+    def readcell(self, row, col):
+        indx = self.firstNrow(row) + col 
+        data_plan = self.table[indx]
+        return data_plan
 
 
 

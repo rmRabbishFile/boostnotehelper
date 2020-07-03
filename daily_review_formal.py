@@ -10,7 +10,7 @@ import fetcher
 import tablemd
 
 ## TODO: Seperate cson with writing and improve the UI by bash scripts
-
+writefile = "test.cson"
 weekfile = "/home/c7031195/Dropbox/Boostnote//notes/dcdec832-2203-44ec-b8b4-28ef78b1c207.cson"
 dailyfile = "/home/c7031195/Dropbox/Boostnote//notes/c39b9947-b545-4a13-b05f-7b43e54568f8.cson"
 
@@ -30,7 +30,7 @@ if datetime.datetime.today() == 5:
 
 print "This is weekly plan"
 
-for i in range(1, 4):
+for i in range(2, 5):
     weektable.printElement(i, 0)
     weektable.printElement(i, 1)
 
@@ -45,8 +45,9 @@ index_tomorrow = (week_day + 1) % 6
 
 dailytable.printElement(index_today, planIndex)
 
-writefile = "test.cson"
-print "please specify what is done"
+
+print "Try to be short, put `e` for next step."
+print "please specify what is done:"
 buffer = dailytable.getTableEntry(index_today, planIndex + 1)
 #data_table[index_today+2] = buffer.decode('utf-8')
 

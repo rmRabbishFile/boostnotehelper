@@ -12,11 +12,12 @@ import cson
 ### TODO: Seperate the md writing file with cson.
 
 class Fetcher:
-  def __init__(self, file_name = "test.cson"):
+  def __init__(self, file_name = "test.cson", end_ind="linesHighlighted"):
     self.file_data = ""
     self.file_name = file_name
     #self.head_indr = head_key #Search can be used
     self.data_table = []
+    self.endkey = "'''\n"+end_ind
 
   def read_file(self):
     with open(self.file_name,'r') as weekfile:
@@ -31,7 +32,6 @@ class Fetcher:
   def write_file(self, startIdx, data_table):
     # head = self.write_data[0:204]
     self.keykey = "content: '''"
-    self.endkey = "'''\nlinesHighlighted"
     self.head = self.write_data.find(self.keykey)+ len(self.keykey) + 1
     self.end = self.write_data.find(self.endkey)
     seperator = u'|' 
