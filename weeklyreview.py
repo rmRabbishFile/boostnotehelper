@@ -7,13 +7,29 @@
 import fetcher
 import tablemd
 
+
 class WeeklyReview:
-    def __init__(self, weekfile):
-        self.weekreview = fetcher.Fetcher(weekfile)
+    def __init__(self, weekfile, weeknumber):
+        self.weekreview = fetcher.Fetcher(weekfile, end_ind="tag")
         self.weekreview.read_file()
         self.weektable = tablemd.tablemd(self.weekreview.content_data)
+        weektitle = [self.weektable.readcell(0,2*i+1).encode('ascii','ignore') 
+                                for i in range(3)]
+        weeknumbers = [int(filter(str.isdigit,strt)) 
+                                for strt in weektitle]
+        self.week_index = 1 + weeknumbers.index(weeknumber) * 2
+        #print self.weektable.table
 
     def printReview(self):
-        for i in range(1, 4): ## Print all the entire table
+        for i in range(2, self.weektable.nrow+1): ## Print 
+            # the entire table
             self.weektable.printElement( i, 0)
-            self.weektable.printElement( i, 1)
+            self.weektable.printElement( i, self.week_index)
+
+    def reviewByCat(self):
+        for i in range(2, self.weektable.nrow+1): ## Print 
+            # the entire table
+            self.weektable.printElement( i, 0)
+            self.weektable.printElement( i, self.week_index)
+            self.weektable.getTableEntry(i, self.week_index + 1)
+        self.weekreview.write_file(self.weektable.table_head, self.weektable.table)

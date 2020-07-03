@@ -1,0 +1,46 @@
+createdAt: "2018-07-24T15:24:44.702Z"
+updatedAt: "2020-07-01T11:22:58.227Z"
+type: "MARKDOWN_NOTE"
+folder: "7334c1cdd9476578bbc4"
+title: "weekly Summary: Always set a number of STEPS"
+content: '''
+# weekly Summary: Always set a number of STEPS
+See [previous summary](:note:87ab5326-a8d0-49ba-a30b-e5df9e46cd47)
+Read [AAS everyday](:note:b2750bc4-a641-4cad-a8ac-f07cce1b2fc3)
+
+Current notes:
+[PHD proposals](:note:8659dc75-5fbc-4e40-b7e7-30d5c765bd62)
+
+----
+ Weekly Review|||||||
+|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+| weeknumbers|W27||W28||W29||W30||
+|Project name|Plan| Done|Plan| Done|Plan| Done|Plan| Done|
+|UIBK| Constraints algorithm (4d) <br> extended abstract (1d)    |  123<br>|       | | | | | |
+|Practical| tensorflow tutorial (0.5d) <br>Kaggle competition (3d)<br> IELS (2d) |  <br>|       | | | | | |
+|Reading slots|Papers in todo folder(5h)|  |     | | | | | |
+|Software slots|Python Q (2h)<br> See calendar (1h)|  |   | | | | | |
+|Skills|Videos B X20 (3d) |  |       | | | | | |
+|Saturday| [Python Web Scraping](https://elitedatascience.com/python-web-scraping-libraries) (4h)       |  |  | | | | | |
+
+
+
+
+
+
+* Validate that it is a contribution
+1. Vision assisted PbD check
+
+
+
+
+
+'''
+tags: [
+  "review"
+  "summary"
+  "TODO"
+]
+isStarred: false
+isTrashed: false
+linesHighlighted: []
