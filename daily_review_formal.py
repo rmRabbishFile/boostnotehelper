@@ -8,21 +8,24 @@ import sys
 
 import fetcher
 import tablemd
+import weeklyreview
 
 ## TODO: Seperate cson with writing and improve the UI by bash scripts
 writefile = "test.cson"
 weekfile = "/home/c7031195/Dropbox/Boostnote//notes/dcdec832-2203-44ec-b8b4-28ef78b1c207.cson"
 dailyfile = "/home/c7031195/Dropbox/Boostnote//notes/c39b9947-b545-4a13-b05f-7b43e54568f8.cson"
+weeknumber = datetime.date.today().isocalendar()[1]
+
 
 ## Read in the content
 dailyreview =  fetcher.Fetcher(dailyfile)
+
 #testing and prototyping
 dailyreview.read_file()
-weekreview = fetcher.Fetcher(weekfile)
-weekreview.read_file()
+
 ## Read in tables
 dailytable = tablemd.tablemd(dailyreview.content_data)
-weektable = tablemd.tablemd(weekreview.content_data)
+weekdata = weeklyreview.WeeklyReview(weekfile,weeknumber)
 
 if datetime.datetime.today() == 5:
     print("Today is Saturday, Backing off...")
@@ -30,9 +33,7 @@ if datetime.datetime.today() == 5:
 
 print "This is weekly plan"
 
-for i in range(2, 5):
-    weektable.printElement(i, 0)
-    weektable.printElement(i, 1)
+weekdata.printReview()
 
 print "Today plan is"
 # First day is sunday: control loop of the day

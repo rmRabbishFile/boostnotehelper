@@ -22,11 +22,12 @@ class tablemd:
         tablecontent = mdcontent[self.table_head:]
         self.table = tablecontent[1:].split(u'|')
         self.colcnt = self.table.index('\n')
+        # FIXME: check if table are complete: same number of cols for each row
         self.first =  self.colcnt + 1
-        self.nrow = self.table.count('\n')
+        self.nrow = self.table.count('\n') 
 
         ## TODO: Create a dictionary for title
-        ##       Get the # of rows of the table
+        
         
     def firstNrow(self, n):
         return n * self.first

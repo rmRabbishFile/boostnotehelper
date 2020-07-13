@@ -33,3 +33,11 @@ class WeeklyReview:
             self.weektable.printElement( i, self.week_index)
             self.weektable.getTableEntry(i, self.week_index + 1)
         self.weekreview.write_file(self.weektable.table_head, self.weektable.table)
+    def planByCat(self):
+        print("Please plan for next week:")
+        for i in range(2, self.weektable.nrow+1): ## Print 
+            # the entire table
+            self.weektable.printElement( i, 0)
+            self.weektable.printElement( i, self.week_index)
+            self.weektable.getTableEntry(i, self.week_index + 2)
+        self.weekreview.write_file(self.weektable.table_head, self.weektable.table)
